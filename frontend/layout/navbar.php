@@ -32,7 +32,7 @@
               </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">News</a>
+            <a class="nav-link" href="artikel.php">News</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="dataPengunjung.php">Data Pengunjung</a>

@@ -230,7 +230,7 @@ if(isset($_SESSION["user"])){
             </div>
             <div class="col-md-8">
             <?php echo $data['judul']; ?> 
-            <a href="#" >Read More</a></td>
+            <a href="frontend/detailArtikel.php?id_artikel=<?php echo $data['id_artikel']; ?>" >Read More</a></td>
             </div>
           </div>
           <hr>

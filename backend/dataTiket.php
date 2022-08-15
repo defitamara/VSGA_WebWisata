@@ -98,7 +98,7 @@ if(!isset($_SESSION["user"])){
                 <div class="card-body">
                   <!-- <h5 class="card-title">Daftar Pengunjung</h5> -->
                     <a class="btn btn-primary" href="tambahDataTiket.php">+ Tambah Data Baru</a>
-                    <a class="btn btn-secondary" href="cetakDataTiket.php">Cetak Data Tiket (.pdf)</a>
+                    <a class="btn btn-secondary" href="cetakDataTiket.php" target="_blank">Cetak Data Tiket (.pdf)</a>
                     <br><br>
 
                     <!-- Pesan pemberitahuan -->

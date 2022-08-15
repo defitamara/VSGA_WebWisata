@@ -361,7 +361,7 @@
                   href="dataTiket.php"
                   aria-expanded="false"
                   ><i class="mdi mdi-receipt"></i
-                  ><span class="hide-menu">Tiket</span></a
+                  ><span class="hide-menu">Data Tiket</span></a
                 >
               </li>
               

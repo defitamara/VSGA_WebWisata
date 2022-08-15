@@ -355,6 +355,15 @@
                   ><span class="hide-menu">Artikel / Berita</span></a
                 >
               </li>
+              <li class="sidebar-item">
+                <a
+                  class="sidebar-link waves-effect waves-dark sidebar-link"
+                  href="dataTiket.php"
+                  aria-expanded="false"
+                  ><i class="mdi mdi-receipt"></i
+                  ><span class="hide-menu">Tiket</span></a
+                >
+              </li>
               
               <!-- <li class="sidebar-item">
                 <a

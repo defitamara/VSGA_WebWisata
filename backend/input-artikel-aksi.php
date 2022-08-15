@@ -11,7 +11,6 @@ $tanggal = $_POST['tanggal'];
 $penulis = $_POST['penulis'];
 // $gambar = $_POST['gambar'];
 $isi = $_POST['isi'];
-$updated = $_POST['tanggal'];
 
 $lokasiGbr = $_FILES['gambar']['tmp_name'];
 $namaGbr = $_FILES['gambar']['name'];
@@ -22,7 +21,7 @@ if($lokasiGbr==""){
 }else{
     // $ambilGambar = addslashes(file_get_contents($_FILES['gambar']['tmp_name']));
     move_uploaded_file($lokasiGbr, 'images/artikel/'.$namaGbr);
-    $sql = "INSERT INTO artikel VALUES ('$id_artikel', '$tanggal', '$penulis', '$judul', '$namaGbr', '$isi', '$updated')";
+    $sql = "INSERT INTO artikel VALUES ('$id_artikel', '$tanggal', '$penulis', '$judul', '$namaGbr', '$isi', null)";
     if(mysqli_query($koneksi, $sql)){
         header("location:dataArtikel.php?pesan=input");
     } 

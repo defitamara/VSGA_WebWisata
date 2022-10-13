@@ -58,15 +58,24 @@ if(isset($_SESSION["user"])){
         
         <div class="col-sm-8">
             <div class="thumbnail">
-                <img src="../backend/images/obyekwisata/<?php echo $data['gambar1']; ?>" width="100%" alt="gambar">
+                <img src="../backend/images/obyekwisata/<?php echo $data['gambar_utama']; ?>" width="100%" alt="gambar">
                 <div class="caption">
                     <p><?php echo $data['deskripsi']; ?></p>
                 </div>
+                <?php } ?>
 
                 <!-- Gambar lainnya -->
                 <h6>Gambar Lainnya:</h6>
-                <a href="../backend/images/obyekwisata/<?php echo $data['gambar2']; ?>" target="_blank"><img src="../backend/images/obyekwisata/<?php echo $data['gambar2']; ?>" class="img-thumbnail" width="40%" alt="..."></a>
-                <a href="../backend/images/obyekwisata/<?php echo $data['gambar3']; ?>" target="_blank"><img src="../backend/images/obyekwisata/<?php echo $data['gambar3']; ?>" class="img-thumbnail" width="40%" alt="..."></a>
+                <!-- Mengambil data gambar dari tabel galeri dengan kategori sama dengan obyek wisata -->
+                <?php 
+                    include '../koneksi.php';
+                    $id = $_GET['id_kategori'];
+                    $query = "SELECT * from galeri WHERE id_kategori='$id'";
+                    $query_mysql = mysqli_query($koneksi,$query) or die(mysqli_error());
+                    while($data2 = mysqli_fetch_array($query_mysql)){
+                ?>
+                <a href="../backend/images/galeri/<?php echo $data2['foto']; ?>" target="_blank"><img src="../backend/images/galeri/<?php echo $data2['foto']; ?>" class="img-thumbnail" width="40%" alt="..."></a>
+                <?php } ?>
 
                 <br><br>
                 <form class="form-horizontal" action="kirim-saran-aksi.php" method="POST">
@@ -95,7 +104,7 @@ if(isset($_SESSION["user"])){
 
             </div>
         </div>
-        <?php } ?>
+        
 
         <div class="col-sm-4">
             <div class="row">
@@ -105,18 +114,18 @@ if(isset($_SESSION["user"])){
                   $id = $_GET['id_kategori'];
                   $query = "SELECT * from obyek_wisata WHERE id_kategori!='$id'";
                   $query_mysql = mysqli_query($koneksi,$query) or die(mysqli_error());
-                  while($data2 = mysqli_fetch_array($query_mysql)){
+                  while($data3 = mysqli_fetch_array($query_mysql)){
                 ?>
                 <div class="col-sm-12">
                     <div class="caption">
-                        <h6><?php echo $data2['nama_obyek']; ?></h6>
+                        <h6><?php echo $data3['nama_obyek']; ?></h6>
                         <div class="row">
                             <div class="col-xl-4">
-                                <img src="../backend/images/obyekwisata/<?php echo $data2['gambar1']; ?>" width="100%" alt="gambar">
+                                <img src="../backend/images/obyekwisata/<?php echo $data3['gambar_utama']; ?>" width="100%" alt="gambar">
                             </div>
                             <div class="col-sm-8">
-                                <p><?php echo(str_word_count($data2['deskripsi']) > 60 ? substr($data2['deskripsi'],0,50)."..." : $data2['isi']) ?></p>
-                                <a href="obyekWisata.php?id_kategori=<?php echo $data2['id_kategori'] ?>" class="btn btn-light btn-block" role="button">Selengkapnya</a>
+                                <p><?php echo(str_word_count($data3['deskripsi']) > 60 ? substr($data3['deskripsi'],0,50)."..." : $data3['isi']) ?></p>
+                                <a href="obyekWisata.php?id_kategori=<?php echo $data3['id_kategori'] ?>" class="btn btn-light btn-block" role="button">Selengkapnya</a>
                             </div>
                         </div>
                     </div>

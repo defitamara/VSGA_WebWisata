@@ -14,21 +14,21 @@
             <a class="nav-link" href="frontend/tiket.php">Ticket</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Promo</a>
+            <a class="nav-link" href="frontend/promo.php">Promo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#portfolio">Gallery</a>
+            <a class="nav-link" href="frontend/galeri.php">Gallery</a>
           </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
               Obyek Wisata
               </a>
               <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Tirta Agung</a>
+              <a class="dropdown-item" href="frontend/obyekWisata.php?id_kategori=WST001">Tirta Agung</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Kala Senja</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">Dapur Konah</a>
+              <a class="dropdown-item" href="frontend/obyekWisata.php?id_kategori=WST002">Kala Senja</a>
+              <!-- <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">Dapur Konah</a> -->
               </div>
           </li>
           <li class="nav-item">

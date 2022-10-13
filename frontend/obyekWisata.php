@@ -13,7 +13,7 @@ if(isset($_SESSION["user"])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Artikel / Berita</title>
+    <title>Tirta Agung</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -39,40 +39,35 @@ if(isset($_SESSION["user"])){
     <!-- Navbar -->
     <?php include 'layout/navbar.php'; ?>
 
+    <!-- Mengambil data detail dari artikel yang diklik -->
+    <?php 
+        include '../koneksi.php';
+        $id = $_GET['id_kategori'];
+        $query = "SELECT * from obyek_wisata WHERE id_kategori='$id'";
+        $query_mysql = mysqli_query($koneksi,$query) or die(mysqli_error());
+        while($data = mysqli_fetch_array($query_mysql)){
+    ?>
 
     <div class="jumbotron text-center">
-        <h1>Artikel / Berita</h1>
-        <p>Kumpulan berita terkini seputar Tirta Agung</p>
+        <h1><?php echo $data['nama_obyek']; ?></h1>
+        <!-- <p>Kumpulan berita terkini seputar Tirta Agung</p> -->
     </div>
 
     <div class="container">
       <div class="row">
-        <!-- Mengambil data detail dari artikel yang diklik -->
-        <?php 
-          include '../koneksi.php';
-          $id = $_GET['id_artikel'];
-          $query = "SELECT * from artikel WHERE id_artikel='$id'";
-          $query_mysql = mysqli_query($koneksi,$query) or die(mysqli_error());
-          while($data = mysqli_fetch_array($query_mysql)){
-        ?>
-
+        
         <div class="col-sm-8">
             <div class="thumbnail">
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="../index.php">Home</a></li>
-                        <li class="breadcrumb-item"><a href="artikel.php">News</a></li>
-                        <li class="breadcrumb-item active" aria-current="page"><b><?php echo $data['judul']; ?></b></li>
-                    </ol>
-                </nav>
-                <img src="../backend/images/artikel/<?php echo $data['gambar']; ?>" width="100%" alt="gambar">
+                <img src="../backend/images/obyekwisata/<?php echo $data['gambar1']; ?>" width="100%" alt="gambar">
                 <div class="caption">
-                    <br>
-                    <p><span class="fa fa-user"></span> <b><?php echo $data['penulis']; ?></b> | <?php echo $data['tanggal']; ?> | Terakhir Diubah: <?php echo $data['updated']; ?></p>
-                    <p><?php echo $data['isi']; ?></p>
-                    <hr>
+                    <p><?php echo $data['deskripsi']; ?></p>
                 </div>
-                
+
+                <!-- Gambar lainnya -->
+                <h6>Gambar Lainnya:</h6>
+                <a href="../backend/images/obyekwisata/<?php echo $data['gambar2']; ?>" target="_blank"><img src="../backend/images/obyekwisata/<?php echo $data['gambar2']; ?>" class="img-thumbnail" width="40%" alt="..."></a>
+                <a href="../backend/images/obyekwisata/<?php echo $data['gambar3']; ?>" target="_blank"><img src="../backend/images/obyekwisata/<?php echo $data['gambar3']; ?>" class="img-thumbnail" width="40%" alt="..."></a>
+
                 <br><br>
                 <form class="form-horizontal" action="kirim-saran-aksi.php" method="POST">
                     <div class="comment">
@@ -107,21 +102,21 @@ if(isset($_SESSION["user"])){
                 <!-- Mengambil data detail dari artikel selain yang diklik -->
                 <?php 
                   include '../koneksi.php';
-                  $id = $_GET['id_artikel'];
-                  $query = "SELECT * from artikel WHERE id_artikel!='$id'";
+                  $id = $_GET['id_kategori'];
+                  $query = "SELECT * from obyek_wisata WHERE id_kategori!='$id'";
                   $query_mysql = mysqli_query($koneksi,$query) or die(mysqli_error());
                   while($data2 = mysqli_fetch_array($query_mysql)){
                 ?>
                 <div class="col-sm-12">
                     <div class="caption">
-                        <h6><?php echo $data2['judul']; ?></h6>
+                        <h6><?php echo $data2['nama_obyek']; ?></h6>
                         <div class="row">
                             <div class="col-xl-4">
-                                <img src="../backend/images/artikel/<?php echo $data2['gambar']; ?>" width="100%" alt="gambar">
+                                <img src="../backend/images/obyekwisata/<?php echo $data2['gambar1']; ?>" width="100%" alt="gambar">
                             </div>
                             <div class="col-sm-8">
-                                <p><?php echo(str_word_count($data2['isi']) > 60 ? substr($data2['isi'],0,50)."..." : $data2['isi']) ?></p>
-                                <a href="detailArtikel.php?id_artikel=<?php echo $data2['id_artikel'] ?>" class="btn btn-light btn-block" role="button">Selengkapnya</a>
+                                <p><?php echo(str_word_count($data2['deskripsi']) > 60 ? substr($data2['deskripsi'],0,50)."..." : $data2['isi']) ?></p>
+                                <a href="obyekWisata.php?id_kategori=<?php echo $data2['id_kategori'] ?>" class="btn btn-light btn-block" role="button">Selengkapnya</a>
                             </div>
                         </div>
                     </div>

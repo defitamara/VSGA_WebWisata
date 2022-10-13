@@ -141,5 +141,10 @@ if(isset($_SESSION["user"])){
 
     <!-- Template Main JS File -->
     <script src="js/main.js"></script>
+
+    <!-- Bootstrap agar Navbar Aktif -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </body>
 </html>
